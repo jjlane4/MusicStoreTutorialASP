@@ -10,17 +10,30 @@ using MVCMusicStore.Models;
 
 namespace MVCMusicStore.Controllers
 {
+
     public class AlbumsController : Controller
     {
         private MVCMusicStoreContext db = new MVCMusicStoreContext();
 
+        public ActionResult DisplayByArtist(int artistID)
+        {
+            //some code here
+            return View();
+        }
+
         // GET: Albums
+        [Route("Albums/All")]
         public ActionResult Index()
         {
-            return View(db.Albums.ToList());
+            //gets model
+            var albums = db.Albums.ToList();
+            
+            //combine model with the view and returns
+            return View(albums);
         }
 
         // GET: Albums/Details/5
+        [Route("Album/{id:int}")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +49,8 @@ namespace MVCMusicStore.Controllers
         }
 
         // GET: Albums/Create
+        //authorize requires login when this action is called
+        //[Authorize()]
         public ActionResult Create()
         {
             return View();
@@ -59,6 +74,7 @@ namespace MVCMusicStore.Controllers
         }
 
         // GET: Albums/Edit/5
+        [Route("Album/Edit/{id:int}")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
