@@ -22,7 +22,7 @@ namespace MVCMusicStore.Controllers
         }
 
         // GET: Albums
-        [Route("Albums/All")]
+        [Route("Albums/Index")]
         public ActionResult Index()
         {
             //gets model
