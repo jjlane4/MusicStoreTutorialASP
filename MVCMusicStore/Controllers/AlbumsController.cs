@@ -50,7 +50,7 @@ namespace MVCMusicStore.Controllers
 
         // GET: Albums/Create
         //authorize requires login when this action is called
-        //[Authorize()]
+        [Authorize()]
         public ActionResult Create()
         {
             return View();
